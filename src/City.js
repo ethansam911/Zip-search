@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -7,7 +8,8 @@ class City extends React.Component {
 	super(props);
 	this.state = {
 	    city: "",
-	    data: []
+		data: [],
+		value: 0,
 	};
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,18 +32,25 @@ class City extends React.Component {
 		console.log(response.data);
 		this.setState({data: response.data});
 	    })
-	    .then ( () => console.log(this.state.data))
+		.then ( () => console.log(this.state.data))
+		.then(() => console.log(this.state.data[1]) )
 	    .catch(error => console.log(error))
     }
 
     displayData = () => {
 	const {data} = this.state;
 	if(data.length !== 0){
-	    let result = data.map( city => {
-		for(let i = 0; i < data.length; i++){
-			<p className="city" key={i}>{data[i]}<br/></p>;
+	    let result = () => {
+			
+		for( let i = 0; i<this.state.data.length; i++) 
+		{
+		// let num =i.toString(10);
+		//	let element = <p className="city"> {this.state.data[4]}<br /></p>;
+			let zipcode = this.state.data[i];
+		console.log(zipcode);
+
 		}
-	    });
+	    };
 	    return result;
 	}
 	else {

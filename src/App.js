@@ -8,14 +8,10 @@ import City from './City'
 class App extends Component {
   render() {
       return (
-	      <div>
-	      <div className="zip_code_page">
+	    <div>
 	      <Zipcode />
-	      </div>
-	      <div className="city_page">
 	      <City />
-	      </div>
-	      </div>
+	  </div>
     );
   }
 }
