@@ -40,7 +40,7 @@ componentDidMount() {
 }
 
 fetchCityData() {
-    axios.get("http://ctp-zip-api.herokuapp.com/zip/")
+    axios.get("http://ctp-zip-api.herokuapp.com/zip/"+this.state.zip_code_value)
         .then(response => {
             console.log(response.data);
                 var wanted = [this.state.zip_code_value];
@@ -55,13 +55,9 @@ fetchCityData() {
 render() {
     return (
         <div>
-        <label>
-            Zip Code:
-                <input type="value" value= "" onChange={this.handleChange} name="zip_code" />
-        </label>
-        <input type="button" onClick={this.handleSubmit} value="submit" />
-        </div> 
-    
+            <h1>Zip Code</h1>
+            <input id="zipcode" type="text" placeholder="zip code" onChange={this.handleSubmit}></input>
+       </div>
     );
 }
 }
