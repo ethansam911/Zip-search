@@ -6,7 +6,7 @@ import axios from 'axios';
 class Zipcode extends React.Component {
 constructor(props) {
     super(props);
-    this.state = { zip_code_value: 11385,
+    this.state = { zip_code_value: {},
     data:   
     [
         {
@@ -24,10 +24,11 @@ constructor(props) {
 
 handleChange(event) 
 {
-    this.setState({ value: event.target.value });
+    this.setState({ zip_code_value: event.target.value });
 }
 
 handleSubmit(event) {
+    this.setState({ zip_code_value: event.target.value });
     alert('A Zipcode was submitted: ' + this.state.zip_code_value);
     event.preventDefault();
 }
@@ -39,28 +40,28 @@ componentDidMount() {
 }
 
 fetchCityData() {
-    axios.get("http://ctp-zip-api.herokuapp.com/zip/11385"+this.state.zip_code_value)
+    axios.get("http://ctp-zip-api.herokuapp.com/zip/")
         .then(response => {
             console.log(response.data);
-
+                var wanted = [this.state.zip_code_value];
+                var result = response.data.filter(zipcode =>wanted.includes(zipcode.id)  )
+                this.setState({data: result})
         })
-        .catch(error=> {
-
-            console.log(error);
-        })
+        .catch(error => console.log(error));
 
 }
 
 
 render() {
     return (
-        <form onSubmit={this.handleSubmit}>
-            <label>
-                Zipcode:
-          <input type="submit" value="submit" onChange={this.handleSubmit} name="zip_code" />
-            </label>
-            
-        </form>
+        <div>
+        <label>
+            Zip Code:
+                <input type="value" value= "" onChange={this.handleChange} name="zip_code" />
+        </label>
+        <input type="button" onClick={this.handleSubmit} value="submit" />
+        </div> 
+    
     );
 }
 }
