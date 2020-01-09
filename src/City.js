@@ -9,10 +9,13 @@ class City extends React.Component {
 	    city: "",
 	    data: []
 	};
+	this.handleChange = this.handleChange.bind(this);
+	this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = event => {
 	let name = event.target.value.toUpperCase();
+	console.log(name);
 	this.setState({ city: name });
     }
 
@@ -34,9 +37,9 @@ class City extends React.Component {
     displayData = () => {
 	const {data} = this.state;
 	if(data.length !== 0){
-	    let result = data.map( data => { 
+	    let result = data.map( city => {
 		for(let i = 0; i < data.length; i++){
-			result += <p>{data[i]}<br/></p>;
+			<p className="city" key={i}>{data[i]}<br/></p>;
 		}
 	    });
 	    return result;
