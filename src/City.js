@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -15,7 +16,7 @@ class City extends React.Component {
 
     handleChange = event => {
 	let name = event.target.value.toUpperCase();
-	console.log(name);
+	//console.log(name);
 	this.setState({ city: name });
     }
 
@@ -27,7 +28,7 @@ class City extends React.Component {
     fetchData = () => {
 	axios.get("http://ctp-zip-api.herokuapp.com/city/" + this.state.city)
 	    .then( response => {
-		console.log(response.data);
+		//console.log(response.data);
 		this.setState({data: response.data});
 	    })
 	    .then ( () => console.log(this.state.data))
@@ -37,10 +38,8 @@ class City extends React.Component {
     displayData = () => {
 	const {data} = this.state;
 	if(data.length !== 0){
-	    let result = data.map( city => {
-		for(let i = 0; i < data.length; i++){
-			<p className="city" key={i}>{data[i]}<br/></p>;
-		}
+	    let result = Object.keys(this.state.data).map( (dataKey) => {
+		return <p className="city" key={dataKey}>{this.state.data[dataKey]}</p>;
 	    });
 	    return result;
 	}
@@ -57,7 +56,7 @@ class City extends React.Component {
 		<input id="city" type="text" placeholder="City" onChange={this.handleChange}></input>
 		<button type="submit">Submit</button>
 		</form>
-		<div>{this.displayData}</div>
+		<div>{this.displayData()}</div>
 		</div>
 	);
     }
