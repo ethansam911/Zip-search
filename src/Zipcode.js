@@ -44,13 +44,18 @@ class Zipcode extends React.Component {
 	const { data } = this.state;
 	if(data.length !== 0) {
 	    let result = data.map( zip => (
-		    <div className="zip" key={zip.RecordNumber}>{zip.Zipcode} + {zip.City}
+		    <div className="zip" key={zip.RecordNumber}>
+		    <h2>{zip.City}, {zip.State}</h2> 
+		    State: {zip.State}<br/>
+		    Location: ({zip.Lat}, {zip.Long})<br/>
+		    Population (estimated): {zip.EstimatedPopulation} <br/>
+		    Total Wages: {zip.TotalWages}
 		</div>
 	    ));
 	    return result;
 	}
 	else {
-	    return null;
+	    return (<div>No Results</div>);
 	}
     }
 
