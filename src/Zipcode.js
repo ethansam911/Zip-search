@@ -55,19 +55,19 @@ class Zipcode extends React.Component {
 	    return result;
 	}
 	else {
-	    return (<div>No Results</div>);
+	    return (<div class="results">No Results</div>);
 	}
     }
 
     render() {
 	return (
 		<div>
-		<h1>Zip Code</h1>
-		<form onSubmit={this.handleSubmit}>
-		<input id="zipcode" type="text" placeholder="Zip Code" onChange={this.handleChange}></input>
-		<button type="submit">Submit</button>
-		</form>
-		<div>{this.displayData()}</div>
+			<h1 class="zipcode">Zip Code Search</h1>
+				<form id="form" onSubmit={this.handleSubmit}>
+				<input id="zipcode" type="text" placeholder="Zip Code" onChange={this.handleChange}></input>
+				<button class="submit" type="submit">Submit</button>
+				</form>
+			<div>{this.displayData()}</div>
 	    </div>
 	);
     }

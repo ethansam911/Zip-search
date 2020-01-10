@@ -13,6 +13,7 @@ class City extends React.Component {
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
     }
+ls
 
     handleChange = event => {
 	let name = event.target.value.toUpperCase();
@@ -39,22 +40,22 @@ class City extends React.Component {
 	const {data} = this.state;
 	if(data.length !== 0){
 	    let result = Object.keys(this.state.data).map( (dataKey) => {
-		return <p className="city" key={dataKey}>{this.state.data[dataKey]}</p>;
+		return <div class="city_zipcode" key={dataKey}>{this.state.data[dataKey]}</div>;
 	    });
 	    return result;
 	}
 	else {
-	    return (<p>No Results</p>);
+	    return (<p class ="results" >No Results</p>);
 	}
     }
     
     render() {
 	return(
-		<div>
-		<h1>City Search</h1>
+		<div class="cityform">
+		<h1 class="city" >City Search</h1>
 		<form onSubmit={this.handleSubmit}>
 		<input id="city" type="text" placeholder="City" onChange={this.handleChange}></input>
-		<button type="submit">Submit</button>
+		<button class="submit" type="submit">Submit</button>
 		</form>
 		<div>{this.displayData()}</div>
 		</div>
