@@ -29,6 +29,23 @@
 {
   text-align: center;
 }
+.city_value
+{
+
+  text-align: center;
+  width: 125%;
+  height: 15%;
+  padding: 15px;
+  border: solid black 2px;
+  border-bottom: 1em;
+  border-radius: 10px;
+  border-width: 10%;
+}
+.wrap_zip
+{
+ display: inline-block;
+ 
+}
 
 button
 {

@@ -40,7 +40,7 @@ ls
 	const {data} = this.state;
 	if(data.length !== 0){
 	    let result = Object.keys(this.state.data).map( (dataKey) => {
-		return <div class="city_zipcode" key={dataKey}>{this.state.data[dataKey]}</div>;
+		return <div class="city_value" key={dataKey}>{this.state.data[dataKey]}</div>;
 	    });
 	    return result;
 	}
@@ -57,7 +57,7 @@ ls
 		<input id="city" type="text" placeholder="City" onChange={this.handleChange}></input>
 		<button class="submit" type="submit">Submit</button>
 		</form>
-		<div>{this.displayData()}</div>
+		<div class="wrap_zip">{this.displayData()}</div>
 		</div>
 	);
     }
